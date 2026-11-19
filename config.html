@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Look at me!</title>
+<style>
+:root{--bg:#110c0c;--card:#1b1414;--line:#332725;--fg:#f1e8e0;--muted:#a9978e;--accent:#8fb6e6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 -apple-system,system-ui,"Segoe UI",Roboto,sans-serif;padding:20px max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{margin:0;font-size:30px;letter-spacing:-.01em}
+h1 span{color:var(--accent)}
+.sub{margin:4px 0 0;color:var(--muted);font-size:14px}
+section{margin-top:24px}
+h2{font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin:0 0 8px;color:var(--muted);font-weight:600}
+.card{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px}
+.note{color:var(--muted);font-size:13px;margin:10px 0 0}
+.grp{font-size:13px;color:var(--muted);margin:2px 0 8px}
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:10px;margin-bottom:12px}
+.sw button{display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:0;color:var(--fg);font:12px/1.2 inherit;cursor:pointer;padding:0}
+.sw i{display:block;width:44px;height:44px;border-radius:50%;border:2px solid #4a3a37}
+.sw i::after{content:"";display:block;width:14px;height:14px;margin:13px auto;border-radius:50%;background:#000}
+.sw i.slit::after{width:5px;height:22px;margin:9px auto}
+.sw button[aria-pressed=true] i{border-color:var(--fg);outline:2px solid var(--accent);outline-offset:2px}
+.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+input[type=color]{width:52px;height:36px;border:1px solid var(--line);border-radius:8px;background:none;padding:2px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{flex:1;min-width:84px;font:inherit;font-size:15px;padding:10px 8px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--fg);cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#111;font-weight:600}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:12px}
+input[type=checkbox]{appearance:none;width:50px;height:30px;border-radius:15px;background:#3b2f2c;position:relative;flex:none;cursor:pointer}
+input[type=checkbox]::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .15s}
+input[type=checkbox]:checked{background:var(--accent)}
+input[type=checkbox]:checked::after{left:23px}
+.btn{display:block;width:100%;font:inherit;font-weight:700;font-size:17px;padding:14px;border-radius:12px;border:0;cursor:pointer;background:var(--accent);color:#111;margin-top:18px}
+.saved{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:8px 16px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+.saved.on{opacity:1}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style></head><body>
+<h1>Look at <span>me!</span></h1>
+<p class="sub">The eye sleeps until you look at your watch. Then it opens, finds you and keeps looking at you.</p>
+<button class="btn" id="preview" type="button">Wake the eye now</button>
+
+<section><h2>Iris</h2><div class="card">
+  <div class="grp">Standard</div><div class="sw" id="std"></div>
+  <div class="grp">Unusual</div><div class="sw" id="odd"></div>
+  <div class="row"><label for="custom">Custom colour</label><input type="color" id="custom"><button type="button" class="seg-like" id="useCustom" style="font:inherit;font-size:14px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--fg)">Use it</button></div>
+</div></section>
+
+<section><h2>Look</h2><div class="card">
+  <div class="toggle"><label for="dark">Black surround<br><small style="color:var(--muted)">Only the lids show and everything around them is black. Turn off for skin across the whole screen.</small></label><input type="checkbox" id="dark"></div>
+  <div class="toggle" style="margin-top:14px"><label for="glint">Window reflection on the eye</label><input type="checkbox" id="glint"></div>
+</div></section>
+<section><h2>Pupil</h2><div class="card"><div class="seg" id="pupil"></div></div></section>
+<section><h2>Time font</h2><div class="card"><div class="seg" id="font"></div></div></section>
+<section><h2>Pixels</h2><div class="card"><div class="seg" id="dither"></div>
+  <p class="note">Flat uses the watch's 64 colours as they are. Dithered mixes them in a fine pattern for softer shading. Try both on your screen.</p></div></section>
+<section><h2>Wake the eye</h2><div class="card"><div class="seg" id="wake"></div>
+  <div class="toggle" style="margin-top:14px"><label for="light">Also when the backlight turns on</label><input type="checkbox" id="light"></div>
+  <p class="note">Tilt wakes the eye when you raise your wrist and hold it still to look. It reads the motion sensor 2.5 times a second. Shake uses the watch's built-in flick detection and saves the most battery. The backlight option follows your watch's own motion backlight and button presses.</p></div></section>
+<section><h2>How long it stares</h2><div class="card"><div class="seg" id="stare"></div></div></section>
+<section><h2>Veins</h2><div class="card"><div class="seg" id="veins"></div></div></section>
+<section><h2>Clock</h2><div class="card"><div class="seg" id="clock"></div></div></section>
+<section><div class="card toggle"><label for="quiet">Sleep during Quiet Time</label><input type="checkbox" id="quiet"></div></section>
+<div class="saved" id="saved">Saved</div>
+
+<script>
+var STD=[['espresso','Espresso','#5c341a'],['hazel','Hazel','#5c7c3a','#8a541c'],['forest','Forest','#327848'],['steel','Steel blue','#3a6aac'],['ice','Ice grey','#8494a0'],['amber','Amber','#c67e24']];
+var ODD=[['violet','Violet','#783cc8'],['albino','Albino red','#cc2438'],['ghost','Ghost','#d6e8f6'],['cat','Cat gold','#eaae0a',null,1],['cyan','Neon cyan','#00d6ff'],['toxic','Toxic','#82ff14',null,1],['split','Split','#3a6aac','#92541c'],['void','Void','#1a1618'],['demon','Demon','#d61818',null,1]];
+var S={};
+function $(id){return document.getElementById(id);}
+function flash(){var s=$('saved');s.classList.add('on');setTimeout(function(){s.classList.remove('on');},900);}
+function save(){Pebble.sendMessage('pkjs',{type:'set',settings:S}).then(flash);}
+function seg(id,opts,key){var el=$(id);el.innerHTML='';opts.forEach(function(o){var b=document.createElement('button');b.type='button';b.textContent=o[1];b.setAttribute('aria-pressed',S[key]===o[0]);b.onclick=function(){S[key]=o[0];seg(id,opts,key);save();};el.appendChild(b);});}
+function swatches(id,list){var el=$(id);el.innerHTML='';list.forEach(function(p){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',S.iris===p[0]);
+  var i=document.createElement('i');i.style.background=p[3]?'linear-gradient(90deg,'+p[3]+' 50%,'+p[2]+' 50%)':p[2];if(p[4])i.className='slit';
+  b.appendChild(i);b.appendChild(document.createTextNode(p[1]));b.onclick=function(){S.iris=p[0];swatches('std',STD);swatches('odd',ODD);save();};el.appendChild(b);});}
+function render(r){S=r.settings;
+  swatches('std',STD);swatches('odd',ODD);
+  $('custom').value=S.custom||'#3a6aac';
+  $('useCustom').onclick=function(){S.custom=$('custom').value;S.iris='custom';swatches('std',STD);swatches('odd',ODD);save();};
+  $('custom').onchange=function(){S.custom=$('custom').value;S.iris='custom';swatches('std',STD);swatches('odd',ODD);save();};
+  seg('pupil',[['auto','Like the iris'],['round','Round'],['slit','Slit']],'pupil');
+  seg('font',[[0,'Orbitron'],[1,'Michroma'],[2,'Chakra Petch']],'font');
+  seg('dither',[[0,'Flat'],[1,'Dithered']],'dither');
+  (function wakeSeg(){var el=$('wake');el.innerHTML='';[[1,'Tilt'],[2,'Shake'],[3,'Both']].forEach(function(o){var b=document.createElement('button');b.type='button';b.textContent=o[1];b.setAttribute('aria-pressed',(S.wake&3)===o[0]);b.onclick=function(){S.wake=(S.wake&4)|o[0];wakeSeg();save();};el.appendChild(b);});})();
+  var lt=$('light');lt.checked=!!(S.wake&4);lt.onchange=function(){S.wake=(S.wake&3)|(lt.checked?4:0);save();};
+  seg('stare',[[0,'Short'],[1,'Normal'],[2,'Long']],'stare');
+  seg('veins',[[0,'None'],[1,'Subtle'],[2,'Bloodshot']],'veins');
+  seg('clock',[[0,'Like my watch'],[1,'24 h'],[2,'12 h']],'clock');
+  var dk=$('dark');dk.checked=!!S.dark;dk.onchange=function(){S.dark=dk.checked?1:0;save();};
+  var gl=$('glint');gl.checked=!!S.glint;gl.onchange=function(){S.glint=gl.checked?1:0;save();};
+  var q=$('quiet');q.checked=!!S.quiet;q.onchange=function(){S.quiet=q.checked?1:0;save();};}
+$('preview').onclick=function(){Pebble.sendMessage('pkjs',{type:'preview'});};
+Pebble.addEventListener('ready',function(){Pebble.sendMessage('pkjs',{type:'get'}).then(render);});
+</script>
+</body></html>

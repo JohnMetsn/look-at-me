@@ -1,0 +1,163 @@
+{
+  "name": "look-at-me",
+  "author": "John Metsn",
+  "version": "1.0.0",
+  "keywords": [
+    "pebble-app"
+  ],
+  "dependencies": {},
+  "pebble": {
+    "displayName": "Look at me!",
+    "uuid": "603137b7-ee90-4c64-bbb5-f703c6fc3477",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "targetPlatforms": [
+      "emery",
+      "gabbro"
+    ],
+    "watchapp": {
+      "watchface": true
+    },
+    "capabilities": [
+      "configurable"
+    ],
+    "messageKeys": [
+      "HELLO",
+      "DEMO",
+      "S_IRIS",
+      "S_IRIS2",
+      "S_IMODE",
+      "S_PUPIL",
+      "S_PRAD",
+      "S_SCLERA",
+      "S_FONT",
+      "S_DITHER",
+      "S_WAKE",
+      "S_STARE",
+      "S_VEINS",
+      "S_QUIET",
+      "S_CLOCK",
+      "S_GLINT",
+      "S_DARK"
+    ],
+    "resources": {
+      "media": [
+        {
+          "type": "raw",
+          "name": "EYE",
+          "file": "data/eye.bin"
+        },
+        {
+          "type": "font",
+          "name": "TE_ORB_42",
+          "file": "fonts/Orbitron-Bold.ttf",
+          "characterRegex": "[0-9:]",
+          "targetPlatforms": [
+            "emery"
+          ]
+        },
+        {
+          "type": "font",
+          "name": "TE_MIC_36",
+          "file": "fonts/Michroma-Regular.ttf",
+          "characterRegex": "[0-9:]",
+          "targetPlatforms": [
+            "emery"
+          ]
+        },
+        {
+          "type": "font",
+          "name": "TE_CHK_45",
+          "file": "fonts/ChakraPetch-SemiBold.ttf",
+          "characterRegex": "[0-9:]",
+          "targetPlatforms": [
+            "emery"
+          ]
+        },
+        {
+          "type": "font",
+          "name": "DE_ORB_15",
+          "file": "fonts/Orbitron-Bold.ttf",
+          "characterRegex": "[0-9A-Z ]",
+          "targetPlatforms": [
+            "emery"
+          ]
+        },
+        {
+          "type": "font",
+          "name": "DE_MIC_13",
+          "file": "fonts/Michroma-Regular.ttf",
+          "characterRegex": "[0-9A-Z ]",
+          "targetPlatforms": [
+            "emery"
+          ]
+        },
+        {
+          "type": "font",
+          "name": "DE_CHK_16",
+          "file": "fonts/ChakraPetch-SemiBold.ttf",
+          "characterRegex": "[0-9A-Z ]",
+          "targetPlatforms": [
+            "emery"
+          ]
+        },
+        {
+          "type": "font",
+          "name": "TG_ORB_46",
+          "file": "fonts/Orbitron-Bold.ttf",
+          "characterRegex": "[0-9:]",
+          "targetPlatforms": [
+            "gabbro"
+          ]
+        },
+        {
+          "type": "font",
+          "name": "TG_MIC_40",
+          "file": "fonts/Michroma-Regular.ttf",
+          "characterRegex": "[0-9:]",
+          "targetPlatforms": [
+            "gabbro"
+          ]
+        },
+        {
+          "type": "font",
+          "name": "TG_CHK_50",
+          "file": "fonts/ChakraPetch-SemiBold.ttf",
+          "characterRegex": "[0-9:]",
+          "targetPlatforms": [
+            "gabbro"
+          ]
+        },
+        {
+          "type": "font",
+          "name": "DG_ORB_16",
+          "file": "fonts/Orbitron-Bold.ttf",
+          "characterRegex": "[0-9A-Z ]",
+          "targetPlatforms": [
+            "gabbro"
+          ]
+        },
+        {
+          "type": "font",
+          "name": "DG_MIC_14",
+          "file": "fonts/Michroma-Regular.ttf",
+          "characterRegex": "[0-9A-Z ]",
+          "targetPlatforms": [
+            "gabbro"
+          ]
+        },
+        {
+          "type": "font",
+          "name": "DG_CHK_17",
+          "file": "fonts/ChakraPetch-SemiBold.ttf",
+          "characterRegex": "[0-9A-Z ]",
+          "targetPlatforms": [
+            "gabbro"
+          ]
+        }
+      ]
+    },
+    "configPage": "config.html",
+    "usesPermissions": []
+  }
+}

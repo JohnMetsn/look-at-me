@@ -1,0 +1,12 @@
+build/
+.lock-waf*
+.DS_Store
+node_modules/
+*.pbw
+capture/
+store/upload-*/
+concept/
+screenshots/
+TEST_REPORT.md
+STORE_LISTING.md
+REDDIT_POST.md
