@@ -5,7 +5,7 @@ When you look at your watch, it opens, searches, finds you and keeps looking at 
 
 ![Look at me! on Pebble Time 2 and Pebble Round 2](store/reddit/look-at-me.gif)
 
-**Get it:** Pebble app store (link follows after release)
+**Get it:** [Pebble app store](https://apps.rePebble.com/363ab94be8474e259b7bd7e5)
 
 ## What it does
 
